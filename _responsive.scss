@@ -1,0 +1,314 @@
+$marg : "margin" ;
+$paddg : "padding" ;
+$backcol : "background-color" ;
+$boxsh : "box-shadow" ;
+$anime : "animation" ;
+$trans : "transition";
+$fonts : "font-size" ;
+$wid : 'width' ;
+$hei : 'height' ;
+$radius : 'border-radius' ;
+
+@mixin icon-slider($margin) {
+    position: absolute;
+    top: 80%;
+    #{$marg}:$margin;
+    color: #fff;
+}
+@mixin display($dir,$justify,$align,$wrap) {
+    display:flex;
+    flex-direction:$dir;
+    justify-content: $justify;
+    align-items:$align;
+    flex-wrap: $wrap;
+}
+@mixin navbar-items-style($padd...) {
+    #{$paddg}:$padd ;
+    a{
+      text-decoration: none;
+      color: map-get($map: $colors, $key: textc);
+    }
+}
+@mixin items-for-Style2($top,$right,$width) {
+    display:none;
+    list-style-type:none;
+    position: absolute;
+    #{$backcol}: #fff;
+    #{$radius}:10px;
+    #{$wid}:$width;
+    top: $top;
+    right:$right;
+
+}
+@mixin pointerStyle($right,$top) {
+    right:$right;
+    top:$top;
+    position: absolute;
+    display: none;
+    #{$wid}:10px;
+   #{$hei}:20px;
+   #{$radius}:5px;
+   #{$backcol}:#ccc;
+}
+@mixin anime($anime) {
+    animation:$anime;
+}
+@media screen and (min-width:835px) and (max-width:1024px){
+    %extendPointerStyle2{
+        #{$wid}:0;
+        #{$hei}:0;
+      }
+    header{
+        nav{
+            .navbar-body{
+                .navbar-items1{
+                    &:hover{
+                        .pointer1{
+                        @extend %extendPointerStyle2 ;
+                        }
+                    }
+                }
+                .items-for-buy{
+                    @include items-for-Style2(100%,2%,40%)
+                }
+                .navbar-items2{
+                    &:hover{
+                        .pointer2{
+                            @extend %extendPointerStyle2 ;
+                        }
+                    }
+                }
+                .items-for-rent{
+                    @include items-for-Style2(100%,8%,40%)
+                }
+                .navbar-items3{
+                    &:hover{
+                        .pointer3{
+                            @extend %extendPointerStyle2 ;
+                        }
+                    }
+                }
+                .items-for-motagage{
+                    @include items-for-Style2(100%,14.5%,40%)
+                }
+            }
+        }
+    }
+    .animation{
+        .number{
+           right:70%;
+        }
+    }
+}
+@media screen and (min-width:481px) and (max-width:834px){
+%extendPointerStyle{
+    #{$wid}:0;
+    #{$hei}:0;
+  }
+%extendItemStyle{
+    text-align: center;
+    #{$paddg}:20px 0 20px 0;
+}
+    nav{
+        .navbar-body{
+            .navbar-items1{
+                &:hover{
+                    .pointer1{
+                        @extend %extendPointerStyle ;
+                    }
+                }
+            .items-for-buy{
+                @include items-for-Style2(100%,0,100%);
+                .buy-item{
+                   @extend %extendItemStyle;
+                }
+            }
+        }
+
+        .navbar-items2{
+            &:hover{
+                .pointer2{
+                  @extend %extendPointerStyle ;
+                   
+                }
+            }
+            .items-for-rent{
+                @include items-for-Style2(100%,0,100%);
+                .rent-item{
+                    @extend %extendItemStyle;
+                }
+            }
+        }
+        .navbar-items3{
+            &:hover{
+                .pointer3{
+                   @extend %extendPointerStyle;
+                }
+            }
+            .items-for-motagage{
+                @include items-for-Style2(100%,0,100%);
+                .motagage-item{
+                    @extend %extendItemStyle;
+                }
+            }
+        }
+        }
+    }
+.animation{
+    .number{
+        top:12%;
+        right: 5%;
+        #{$fonts}:.9em;
+       
+    }
+}
+.item-one{
+    #{$marg}:3px 0 0 0;
+}
+.item-two{
+    #{$marg}:3px 0 0 0;
+}
+.item-three{
+    #{$marg}:3px 0 0 0;
+}
+.item-four{
+    #{$marg}:3px 0 0 0;
+}
+.item-five{
+    #{$marg}:3px 0 0 0;
+}
+.item-six{
+    #{$marg}:3px 0 0 0;
+}
+}
+@media screen and (max-width:480px){
+    body{
+        section{
+            grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+        }
+    }
+header{
+        .header-sec{
+           #{$hei}:50px;
+            h1{
+                #{$fonts}:1.4em;
+            }
+        }
+        nav{
+            .navbar-body{
+                @include display(column,center,center,nowrap);
+            .navbar-items1{
+                @include navbar-items-style(0 0 10px 0);
+                .buy-item{
+                    text-align: center;
+                    #{$paddg}:20px 0 20px 0;
+                }
+            }
+            .items-for-buy{
+            @include items-for-Style2(30%,0,100%);
+            }
+            .pointer1{
+            @include pointerStyle(48%,20%)
+            }
+
+            .navbar-items2{
+                @include navbar-items-style(0 0 10px 0);
+            }
+            .items-for-rent{
+                @include items-for-Style2(63%,0,100%);
+                .rent-item{
+                    text-align: center;
+                     #{$paddg}:20px 0 20px 0;
+                }
+            }
+            .pointer2{
+                @include pointerStyle(48%,54%);
+                }
+
+            .navbar-items3{
+                @include navbar-items-style(0 0 10px 0);
+                #{$marg}:0 0 0 0;
+            }
+            .items-for-motagage{
+                @include items-for-Style2(100%,0,100%);
+                .motagage-item{
+                    text-align: center;
+                    #{$paddg}:20px 0 20px 0;
+                }
+            }
+            .pointer3{
+                @include pointerStyle(48%,90%);
+                }
+            }
+        }
+
+    }
+.animation{
+    .number{
+        display:none;
+    }
+
+    #icon2{
+        @include icon-slider(0 0 0 20px)
+    }
+    #icon3{
+        @include icon-slider(0 0 0 0)
+    }
+    .text{
+        @include anime(textt 6s ease infinite);
+        @keyframes textt {
+            0%{color:#fff;#{$fonts}:1em;};
+            100%{color:#000;#{$fonts}:1.1em;}
+        }
+       }
+}
+
+.item-one{
+    #{$marg}:0 0 0 0 ;
+    .item-one-sec2{
+    .inside-one-span{
+    #{$fonts}:.8em;
+    }
+}
+}
+.item-two{
+    #{$marg}:1px 0 0 0 ;
+    .item-two-sec2{
+        .inside-two-span{
+        #{$fonts}:.8em;
+        }
+    }
+}
+.item-three{
+    #{$marg}:1px 0 0 0 ;
+    .item-three-sec2{
+        .inside-three-span{
+        #{$fonts}:.8em;
+        }
+    }
+}
+.item-four{
+    #{$marg}:1px 0 0 0 ;
+    .item-four-sec2{
+        .inside-four-span{
+        #{$fonts}:.8em;
+        }
+    }
+}
+.item-five{
+    #{$marg}:1px 0 0 0 ;
+    .item-fifth-sec2{
+        .inside-five-span{
+        #{$fonts}:.8em;
+        }
+    }
+}
+.item-six{
+    #{$marg}:1px 0 0 0 ;
+    .item-six-sec2{
+        .inside-six-span{
+        #{$fonts}:.8em;
+        }
+    }
+}
+}
